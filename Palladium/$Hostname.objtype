@@ -8,7 +8,7 @@ Execute:
     - Palladium:Core
   Command:
     - "import platform"
-    - "sulfur.Write(this, platform.node())"
+    - "sulfide.Write(this, platform.node())"
     - "SuccessMessage(this)"
 Display:
   InheritsFrom: Value

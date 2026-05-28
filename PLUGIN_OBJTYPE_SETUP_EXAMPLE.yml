@@ -6,7 +6,7 @@ Execute: # required so your object type works properly.
       Author: BobTheDev # the author of the plugin that must be enabled. Mismatched authors are legal but raise a warning. can be blank to allow all authors.
       Source: https://github.com/bobthedev/ExampleDependencyPlugin # a url where this plugin can be installed. can be blank to not show a url.
   Include: # a list of resources to include from other plugins. resources are .py files containing code that when included, can be used in the Command field.
-    - ExampleDependencyPlugin:VeryCoolResources.Console.Print # path to the resource. for ex. 'PluginName:Path.To.My.File' leads to 'sulfur/plugins/enabled/PluginName/Path/To/My/File.py'.
+    - ExampleDependencyPlugin:VeryCoolResources.Console.Print # path to the resource. for ex. 'PluginName:Path.To.My.File' leads to 'sulfide/plugins/enabled/PluginName/Path/To/My/File.py'.
     # this plugin (PluginObjTypeSetupExample) must have permission to include this resource. learn more in PLUGIN_PCL_SETUP_EXAMPLE.yml
   Command: # what should run when objects of this type are executed and InheritsFrom is not specified.
     - "print('hello world')" # basic python statement.
@@ -44,7 +44,7 @@ Editor: # required so your object type works properly.
       - "world"
     InheritsFrom: # "copies" (inherits) highlights list from a built-in object type. merged with List. examples:
     # Script - all python keyword (if, elif, else, def, True, False, None, etc.) + '...'.
-    # ShellScript - basic shell commands (echo, cd, mkdir, sudo, sulfur, rmdir, rm, cp, mv, git, gh, etc.).
+    # ShellScript - basic shell commands (echo, cd, mkdir, sudo, sulfide, rmdir, rm, cp, mv, git, gh, etc.).
   InheritsFrom: # "copies" (inherits) editor behaviour from a built-in object type. examples:
   # Script - a vim-like full-screen multi-line text editor.
   # Integer - an in-line input field that only accepts integers (full numbers) and mathematical equations resulting in an integer.

@@ -22,7 +22,7 @@ def UnpackObject(node: "Object", visited: set[str] | None = None) -> "list['Obje
     
     l.append(node)
     return l
-def RefreshAll(node: "Object", sulfur: "ObjectTreeCLUI") -> None:
+def RefreshAll(node: "Object", sulfide: "ObjectTreeCLUI") -> None:
     global _refresh_in_progress
     
     if _refresh_in_progress:
@@ -50,7 +50,7 @@ def RefreshAll(node: "Object", sulfur: "ObjectTreeCLUI") -> None:
         success_count = 0
         for obj in filtered_objects:
             try:
-                obj._Execute(otclui=sulfur)
+                obj._Execute(otclui=sulfide)
                 success_count += 1
             except Exception as e:
                 print(f"\033[31mFailed to refresh {obj.GetType()}: {e}\033[0m")

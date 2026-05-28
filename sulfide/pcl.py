@@ -11,7 +11,7 @@ def PluginError(err: Exception, plugin: "Plugin") -> None:
     print(f"\033[33;3mLikely culprit: \033[0m{plugin.name}\033[33;3m. Run 'pcldisable {plugin.name}' and try again.\033[0m")
     exit(1)
 
-SEP: str = "\\" if os.name == "nt" else "/" # CODE FROM sulfur/util.py!!!!!!!!!
+SEP: str = "\\" if os.name == "nt" else "/" # CODE FROM sulfide/util.py!!!!!!!!!
 # cannot import due to ImportError (circular import)
 
 def LoadResource(rel_path: str, dir: bool = False, contents: str | None = None) -> None:
@@ -35,7 +35,7 @@ def LoadNecessaryResources() -> None:
     LoadResource("plugins/enabled", dir=True)
     LoadResource("plugins/disabled", dir=True)
     LoadResource("plugins", dir=True)
-    LoadResource("sulfur.bat", dir=False, contents="@echo off;;python -m shiv;;pause".replace(";;", "\n"))
+    LoadResource("sulfide.bat", dir=False, contents="@echo off;;python -m shiv;;pause".replace(";;", "\n"))
 
 PLUGIN_PATH: str = f"{__file__}{SEP}..{SEP}plugins"
 def _GetEnabledPluginPaths() -> list[str]:

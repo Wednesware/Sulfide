@@ -1,6 +1,6 @@
 """
-Sulfur windows/linux release
-source: https://github.com/fossil-org/Sulfur
+Sulfide windows/linux release
+source: https://github.com/fossil-org/Sulfide
 
 Developed by: pilot (gh: pilot-gh)
 Published by: FOSSIL (gh: fossil-org)
@@ -208,7 +208,7 @@ class _temp_created_cls:
                 if None in importedv.values():
                     return
                 ExecString = lambda sl: ("\n".join(sl) if isinstance(sl, list) else sl).replace('\x00', '')
-                protocol = lambda s, v: exec(ExecString((ot_content["Execute"] or {}).get("Command") or "print('No command specified for this operation.')"), v | importedv | {"global_storage": global_storage, "sulfur": otclui})
+                protocol = lambda s, v: exec(ExecString((ot_content["Execute"] or {}).get("Command") or "print('No command specified for this operation.')"), v | importedv | {"global_storage": global_storage, "sulfide": otclui})
         return protocol(self.__content, {
             "this": self,
             "require": Require
@@ -336,7 +336,7 @@ class ObjectTreeCLUI:
         commands: dict[str, Any] = (commands or {}) | {
             "q": exit,
             "c": lambda: (os.system("clear"), self.Display(viewer_mode=viewer_mode), exit()),
-            "re": lambda: (GreenPrint("Sulfur refreshed!"), self.Display(viewer_mode=viewer_mode), exit())
+            "re": lambda: (GreenPrint("Sulfide refreshed!"), self.Display(viewer_mode=viewer_mode), exit())
         }
         if not viewer_mode:
             if ea and t not in ["Folder", "Class", "ValueArray", "Workspace"]:
@@ -346,7 +346,7 @@ class ObjectTreeCLUI:
             if et in (["Script", "ScriptEval", "ShellScript"] + Plugin.GetExecutableObjectTypes(Plugin.GetEnabledPlugins())):
                 commands[f".{order_char}"] = lambda: (print(), node._Execute({ # NOQA
                     "Script": exec,
-                    "ScriptEval": lambda *_, **__: print(node._Execute(eval), otclui=self), # NOQA
+                    "ScriptEval": lambda *_, **__: print(node._Execute(eval, otclui=self)), # NOQA
                     "ShellScript": lambda *_, **__: os.system(node.GetContent()),
                 }.get(et, None), force=et != t, otclui=self), print(), self.Display(viewer_mode=viewer_mode), exit())
             elif et == "Color":
@@ -449,7 +449,7 @@ class ObjectTreeCLUI:
                             for t in OBJECT_TYPE_LIST:
                                 print(f"- {GetRandomColor(t, force=True)}")
                         elif q == "hc":
-                            GreenPrint("Hint: run [n -c] or [nh -c] or start sulfur with the -c option (sulfur (...) -c) to enter color mode where some items are easier to tell apart.")
+                            GreenPrint("Hint: run [n -c] or [nh -c] or start sulfide with the -c option (sulfide (...) -c) to enter color mode where some items are easier to tell apart.")
                             print(*[GetRandomColor(p) for p in "This line will appear colorful in color mode. Try it yourself!".split(" ")])
                             print("\nList of colors (for Color object):")
                             print(*[f"\033[{k}m{k}: {v}\033[0m" for k, v in ANSI_COLORS.items()], "24-bit colors are also supported.", sep="\n")
@@ -458,12 +458,12 @@ class ObjectTreeCLUI:
                         elif viewer_mode:
                             RedPrint(f"\033[91mUnknown command or insufficient permissions to run: [{q}]\033[0m", exit_after=False)
                         elif q.startswith("nh"):
-                            GreenPrint("Relaunching sulfur here...")
-                            os.system(f"{executable} -m sulfur {node.GetPath()} {q.removeprefix('nh')}")
+                            GreenPrint("Relaunching sulfide here...")
+                            os.system(f"{executable} -m sulfide {node.GetPath()} {q.removeprefix('nh')}")
                             exit()
                         elif q.startswith("n"):
-                            GreenPrint("Relaunching sulfur...")
-                            os.system(f"{executable} -m sulfur {q.removeprefix('n')}")
+                            GreenPrint("Relaunching sulfide...")
+                            os.system(f"{executable} -m sulfide {q.removeprefix('n')}")
                             exit()
                         elif q == "xp":
                             GreenPrint("Export process started.")
@@ -499,17 +499,17 @@ class ObjectTreeCLUI:
                                         except FileNotFoundError:
                                             ...
                                         if q == "reset+q":
-                                            GreenPrint("Reset completed. Exiting Sulfur...")
+                                            GreenPrint("Reset completed. Exiting Sulfide...")
                                             exit()
-                                        GreenPrint("Reset completed. Restarting Sulfur...")
-                                        os.system(f"{executable} -m sulfur {node.GetPath()}")
+                                        GreenPrint("Reset completed. Restarting Sulfide...")
+                                        os.system(f"{executable} -m sulfide {node.GetPath()}")
                                         exit()
                                     else:
                                         raise KeyboardInterrupt
                             except (KeyboardInterrupt, EOFError):
                                 RedPrint("Operation cancelled.", exit_after=False)
                         elif q == "pcl":
-                            print("\033[93m[pcl]\033[0m entered pcl command prompt. use commands like desc, enable, disable, enable-all,\ndisable-all, list-enabled, list-disabled or list to navigate your sulfur plugins with pcl.")
+                            print("\033[93m[pcl]\033[0m entered pcl command prompt. use commands like desc, enable, disable, enable-all,\ndisable-all, list-enabled, list-disabled or list to navigate your sulfide plugins with pcl.")
                             GreenPrint("ctrl+c to exit pcl")
                             while True:
                                 try:
@@ -519,23 +519,23 @@ class ObjectTreeCLUI:
                                         if q4cmd == "enable":
                                             if q4args[0] in [plugin.name for plugin in Plugin.GetPlugins()]:
                                                 Plugin(q4args[0], q4args[0] in [plugin.name for plugin in Plugin.GetEnabledPlugins()]).Enable()
-                                                print(f"\033[1;93m[pcl]\033[0m restart sulfur using [nh] (or [n]) to apply changes")
+                                                print(f"\033[1;93m[pcl]\033[0m restart sulfide using [nh] (or [n]) to apply changes")
                                             else:
                                                 RedPrint(f"[pcl] error: plugin '{q4args[0]}' is not installed.", exit_after=False)
                                         elif q4cmd == "disable":
                                             if q4args[0] in [plugin.name for plugin in Plugin.GetPlugins()]:
                                                 Plugin(q4args[0], q4args[0] in [plugin.name for plugin in Plugin.GetEnabledPlugins()]).Disable()
-                                                print(f"\033[1;93m[pcl]\033[0m restart sulfur using [nh] (or [n]) to apply changes")
+                                                print(f"\033[1;93m[pcl]\033[0m restart sulfide using [nh] (or [n]) to apply changes")
                                             else:
                                                 RedPrint(f"[pcl] error: plugin '{q4args[0]}' is not installed.", exit_after=False)
                                         elif q4cmd == "enable-all":
                                             for plugin in Plugin.GetDisabledPlugins():
                                                 plugin.Enable()
-                                            print(f"\033[1;93m[pcl]\033[0m restart sulfur using [nh] (or [n]) to apply changes")
+                                            print(f"\033[1;93m[pcl]\033[0m restart sulfide using [nh] (or [n]) to apply changes")
                                         elif q4cmd == "disable-all":
                                             for plugin in Plugin.GetEnabledPlugins():
                                                 plugin.Disable()
-                                            print(f"\033[1;93m[pcl]\033[0m restart sulfur using [nh] (or [n]) to apply changes")
+                                            print(f"\033[1;93m[pcl]\033[0m restart sulfide using [nh] (or [n]) to apply changes")
                                         elif q4cmd == "list-enabled":
                                             print("\033[1;93m[pcl]\033[0m list of enabled plugins:")
                                             for plugin in Plugin.GetEnabledPlugins():

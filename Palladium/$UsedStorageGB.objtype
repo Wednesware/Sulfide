@@ -8,7 +8,7 @@ Execute:
     - Palladium:Core
   Command:
     - "import psutil"
-    - "sulfur.Write(this, round(psutil.disk_usage('/').used / (1024**3), 2))"
+    - "sulfide.Write(this, round(psutil.disk_usage('/').used / (1024**3), 2))"
     - "SuccessMessage(this)"
 Display:
   InheritsFrom: Value

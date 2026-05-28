@@ -8,7 +8,7 @@ Execute:
     - Palladium:Core
     - pclladium:Core
   Command:
-    - "sulfur.Write(this, GetPluginConfig(this.GetParent().GetName()).get('Author') or '__unsigned__')"
+    - "sulfide.Write(this, GetPluginConfig(this.GetParent().GetName()).get('Author') or '__unsigned__')"
     - "SuccessMessage(this, pn='pclladium')"
 Display:
   InheritsFrom: Value

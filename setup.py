@@ -5,7 +5,7 @@ def read_long_description():
         return f.read()
 
 setup(
-    name='Sulfur',
+    name='Sulfide',
     version='1',
     author='fossil',
     author_email='fossil.org1@gmail.com',
@@ -23,9 +23,9 @@ setup(
     install_requires=["questionary", "windows-curses", "prompt-toolkit", "readchar", "pyyaml"],
     entry_points={
         'console_scripts': [
-            'sulfur=sulfur.entrypoint:main',
-            'pcldisable=sulfur.disable:main',
-            "pclinstall=sulfur.install:main"
+            'sulfide=sulfide.entrypoint:main',
+            'pcldisable=sulfide.disable:main',
+            "pclinstall=sulfide.install:main"
         ]
     }
 )

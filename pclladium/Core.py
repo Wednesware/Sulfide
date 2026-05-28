@@ -20,4 +20,4 @@ def GetPluginConfig(name: str) -> dict:
         except FileNotFoundError:
             return {}
 def OpenPCL(loc: str | None = None) -> None:
-    os.system(f'{sys.executable} -m sulfur {loc or '.'} -r pcl')
+    os.system(f'{sys.executable} -m sulfide {loc or '.'} -r pcl')

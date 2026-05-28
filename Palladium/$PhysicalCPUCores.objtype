@@ -8,7 +8,7 @@ Execute:
     - Palladium:Core
   Command:
     - "import psutil"
-    - "sulfur.Write(this, psutil.cpu_count(logical=False))"
+    - "sulfide.Write(this, psutil.cpu_count(logical=False))"
     - "SuccessMessage(this)"
 Display:
   InheritsFrom: Value

@@ -42,7 +42,7 @@ HIGHLIGHTS: dict[str, list[str]] = {
     "Script": PY_KWS,
     "ScriptModule": PY_KWS,
     "ScriptEval": PY_KWS,
-    "ShellScript": ["echo", "cd", "mkdir", "sudo", "pip", "py", "python", "python3", "sulfur", "rmdir", "rm", "cp", "mv", "venv", "which", "git", "gh"]
+    "ShellScript": ["echo", "cd", "mkdir", "sudo", "pip", "py", "python", "python3", "sulfide", "rmdir", "rm", "cp", "mv", "venv", "which", "git", "gh"]
 }
 GetHighlight: Callable = lambda t: HIGHLIGHTS.get(t) or []
 OBJECT_TYPE_LIST: list[str] = [

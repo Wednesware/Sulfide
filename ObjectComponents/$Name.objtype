@@ -7,7 +7,7 @@ Execute:
   Include:
     - Palladium:Core
   Command:
-    - "sulfur.Write(this, str(this.GetParent().GetName()))"
+    - "sulfide.Write(this, str(this.GetParent().GetName()))"
     - "SuccessMessage(this, pn='ObjectComponents')"
 Display:
   InheritsFrom: Value

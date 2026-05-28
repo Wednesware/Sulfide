@@ -7,7 +7,7 @@ Execute:
   Include:
     - Palladium:Core
   Command:
-    - "RefreshAll(this, sulfur)"
+    - "RefreshAll(this, sulfide)"
 Display:
   InheritsFrom: Script
   Execute:

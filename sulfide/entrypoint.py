@@ -24,7 +24,7 @@ def main() -> None:
         RedPrint("Running in -c (colour) mode", exit_after=False)
     if "-e" in argv:
         RedPrint("Running in -e (eval preview) mode", exit_after=False)
-        print("\033[33mWARNING: This mode executes all ScriptEval objects every time the clui is refreshed. Malicious or broken code may damage or crash sulfur.\033[0m")
+        print("\033[33mWARNING: This mode executes all ScriptEval objects every time the clui is refreshed. Malicious or broken code may damage or crash sulfide.\033[0m")
     if "-n" in argv:
         RedPrint("Running in -n (no permissions) mode", exit_after=False)
         print("\033[33mWARNING: Some commands may not render correctly in -n mode.\033[0m")
@@ -51,7 +51,7 @@ def main() -> None:
         except PermissionError as err:
             if "-v" in argv:
                 raise err
-            RedPrint("Ran into PermissionError. The action you have performed may require administrator permissions on your pc.\nConsider rerunning Sulfur as an administrator.")
+            RedPrint("Ran into PermissionError. The action you have performed may require administrator permissions on your pc.\nConsider rerunning Sulfide as an administrator.")
         except Exception as err:
             if "-v" in argv:
                 raise err
